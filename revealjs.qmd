@@ -1,0 +1,136 @@
+---
+title: "World Bank Data Analysis Presentation"
+author: "Eric Zou"
+date: "Today: Feb 21 2025"
+format:
+  revealjs: default
+bibliography: reference.bib
+---
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+df = pd.read_csv("wdi.csv")
+```
+
+## Introduction
+
+### **World Bank Data Analysis**
+
+- Analyzing key economic indicators
+- Understanding trends across different countries
+- Data sourced from World Bank Indicators dataset [@smith2020]
+
+---
+
+## **GDP per Capita Distribution**
+
+### Key Insights
+
+- Figure shows the variation in GDP per capita.
+- Significant disparities exist among different nations.
+
+```{python}
+#| label: fig-gdp-per-capita
+#| fig-cap: "A histogram showing the distribution of GDP per capita across countries."
+
+import matplotlib.pyplot as plt
+plt.hist(df["gdp_per_capita"].dropna(), bins=30, color="blue", alpha=0.7)
+plt.title("GDP per Capita Distribution")
+plt.xlabel("GDP per Capita")
+plt.ylabel("Count")
+plt.show()
+```
+
+---
+
+## **Inflation vs GDP Growth**
+
+### Key Insights
+
+- Figure displays the relationship between inflation rates and GDP growth rates.
+- No clear trend across all countries.
+
+```{python}
+#| label: fig-inflation-vs-gdp
+#| fig-cap: "A scatter plot showing inflation rates vs GDP growth rates."
+
+plt.scatter(df["inflation_rate"], df["gdp_growth_rate"], color="red", alpha=0.6)
+plt.title("Inflation Rate vs GDP Growth Rate")
+plt.xlabel("Inflation Rate (%)")
+plt.ylabel("GDP Growth Rate (%)")
+plt.show()
+```
+
+---
+
+## **Health Expenditure & Life Expectancy**
+
+### Key Insights
+
+- Figure illustrates the correlation between health spending and life expectancy.
+- Countries spending more on healthcare tend to have higher life expectancies.
+
+```{python}
+#| label: fig-health-vs-life
+#| fig-cap: "Scatter plot of health expenditure vs life expectancy."
+
+plt.scatter(df["health_expenditure_gdp_share"], df["life_expectancy"], color="green", alpha=0.6)
+plt.title("Health Expenditure vs Life Expectancy")
+plt.xlabel("Health Expenditure (% of GDP)")
+plt.ylabel("Life Expectancy (Years)")
+plt.show()
+```
+
+---
+
+## **Unemployment & GDP Per Capita**
+
+### Key Insights
+
+- Figure @fig-unemployment-vs-gdp examines the relationship between unemployment and GDP per capita.
+- Countries with lower unemployment often have higher GDP per capita.
+
+```{python, echo=FALSE, results='hide'}
+#| label: fig-unemployment-vs-gdp
+#| fig-cap: "Scatter plot of unemployment rate vs GDP per capita."
+
+plt.figure(figsize=(10, 6))
+plt.scatter(df["unemployment_rate"], df["gdp_per_capita"], color="purple", alpha=0.6)
+plt.title("Unemployment Rate vs GDP per Capita")
+plt.xlabel("Unemployment Rate (%)")
+plt.ylabel("GDP per Capita")
+plt.grid(True)
+plt.show()
+```
+
+---
+
+## **Key Statistics**
+
+### Summary Table
+
+Table @table-key-stats provides a statistical summary of the dataset.
+
+```{python}
+#| label: table-key-stats
+#| fig-cap: "Summary statistics of key economic indicators."
+
+stats_table = df[["gdp_per_capita", "inflation_rate", "gdp_growth_rate", "unemployment_rate", "health_expenditure_gdp_share"]].describe()
+stats_table
+```
+
+---
+
+## **Conclusion**
+
+- Economic indicators vary significantly across countries.
+- Health expenditure has a positive correlation with life expectancy.
+- Inflation and GDP growth exhibit mixed relationships.
+- Further research is needed to analyze causation.
+
+**Thank you!**
+
+**Source:** Data retrieved from the World Bank Indicators dataset [@worldbank2025].

@@ -1,0 +1,151 @@
+---
+title: "World Bank Data Analysis"
+author: "Eric Zou"
+date: "Today: Feb 21 2025"
+format:
+  html: default
+  pdf: default
+bibliography: reference.bib
+---
+
+## Load Dataset
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+# Load the dataset
+df = pd.read_csv("wdi.csv")
+
+# Display the first few rows
+print(df.head())
+```
+
+## Exploratory Data Analysis
+
+### GDP per Capita Distribution
+
+Figure shows the distribution of GDP per capita across different countries.
+
+```{python}
+#| label: fig-gdp-per-capita
+#| fig-cap: "A histogram showing the distribution of GDP per capita across countries. The data highlights significant disparities between nations." 
+
+
+plt.hist(df["gdp_per_capita"].dropna(), bins=30, color="blue", alpha=0.7)
+plt.title("GDP per Capita Distribution")
+plt.xlabel("GDP per Capita")
+plt.ylabel("Count")
+plt.show()
+```
+
+Finding: most of the countries have less than $100000$ GDP per captia. 
+
+### Inflation Rate vs GDP Growth Rate
+
+Figure illustrates the relationship between inflation rates and GDP growth rates.
+
+```{python}
+#| label: fig-inflation-vs-gdp
+#| fig-cap: "A scatter plot displaying the relationship between inflation rates and GDP growth rates."
+
+plt.scatter(df["inflation_rate"], df["gdp_growth_rate"], color="red", alpha=0.6)
+plt.title("Inflation Rate vs GDP Growth Rate")
+plt.xlabel("Inflation Rate (%)")
+plt.ylabel("GDP Growth Rate (%)")
+plt.show()
+```
+
+Finding: Some countries experience high inflation with negative GDP growth, while other countries have high inflation rate with positive GDP growth together. 
+
+### Health Expenditure vs Life Expectancy
+
+Figure presents a scatter plot of health expenditure as a percentage of GDP and its correlation with life expectancy.
+
+```{python}
+#| label: fig-health-vs-life 
+#| fig-cap: "A scatter chart showing how life expectancy varies with health expenditure as a percentage of GDP."
+
+plt.scatter(df["health_expenditure_gdp_share"], df["life_expectancy"], color="green", alpha=0.6)
+plt.title("Health Expenditure vs Life Expectancy")
+plt.xlabel("Health Expenditure (% of GDP)")
+plt.ylabel("Life Expectancy (Years)")
+plt.show()
+```
+
+Finding: More health expediture, more life expectency people have. 
+
+## Summary of Findings
+
+This part include the cross-reference to my figures above. 
+
+1. **GDP per Capita Distribution:** The distribution of GDP per capita varies widely among countries, with some extreme outliers, as shown in Figure @fig-gdp-per-capita.
+2. **Inflation Rate vs GDP Growth Rate:** There appears to be a mixed relationship between inflation and GDP growth, with no clear trend across all countries, as depicted in Figure @fig-inflation-vs-gdp.
+3. **Health Expenditure vs Life Expectancy:** Countries that spend more on healthcare as a percentage of GDP tend to have higher life expectancies, indicating a positive correlation (Figure @fig-health-vs-life).
+
+### Bar Chart of Health Expenditure vs Life Expectancy
+
+Figure highlights the distribution of health expenditure across randomly selected five countries.
+
+
+::: {.cell}
+```{python}
+#| label: Random_life_expectency_of_countries
+#| fig-cap: "Bar chart representing health expenditure by country."
+
+
+sample_countries = df.dropna(subset=["health_expenditure_gdp_share"]).sample(5)
+
+plt.figure(figsize=(12, 6))
+sns.barplot(x=sample_countries["country"], y=sample_countries["health_expenditure_gdp_share"], color="green")
+plt.title("Health Expenditure vs Country (Random 5)")
+plt.xlabel("Country")
+plt.ylabel("Health Expenditure (% of GDP)")
+plt.xticks(rotation=45)
+plt.show()
+```
+:::
+
+**Source**: Data retrieved from the World Bank Indicators dataset [@worldbank2025].
+
+### Unemployment Rate vs GDP per Capita
+
+Figure illustrates how unemployment rates relate to GDP per capita.
+
+::: {.cell}
+This graph should hide the code and only show the graph. 
+```{python, echo=FALSE, results='hide'}
+
+#| label: fig-unemployment-vs-gdp
+#| fig-cap: "A scatter plot illustrating the relationship between unemployment rate and GDP per capita. Countries with lower unemployment tend to have higher GDP per capita."
+#| echo: false
+
+plt.figure(figsize=(10, 6))
+plt.scatter(df["unemployment_rate"], df["gdp_per_capita"], color="purple", alpha=0.6)
+plt.title("Unemployment Rate vs GDP per Capita")
+plt.xlabel("Unemployment Rate (%)")
+plt.ylabel("GDP per Capita")
+plt.grid(True)
+plt.show()
+```
+:::
+
+## Key Statistics Table
+
+Data [@worldbank2025] provides key insight for key economic indicators analyzed in this report.
+
+```markdown
+
+| Statistic                      | GDP per Capita | Inflation Rate | GDP Growth Rate | Unemployment Rate | Health Expenditure (% of GDP) |
+|--------------------------------|---------------|---------------|----------------|------------------|-----------------------------|
+| Mean                           | 20520.34      | 12.40         | 4.39           | 7.23             | 9.04                        |
+| Median                         | 7606.24       | 7.93          | 4.21           | 5.33             | 8.93                        |
+| Standard Deviation             | 30640.74      | 19.47         | 6.71           | 5.84             | 2.70                        |
+| Minimum                        | 250.63        | -6.69         | -28.76         | 0.13             | 5.10                        |
+| Maximum                        | 226052.00     | 171.21        | 63.33          | 35.36            | 16.57                       |
+```
+
+**Source:** Data retrieved from the World Bank Indicators dataset [@worldbank2025; @smith2020; @johnson2018].
+
