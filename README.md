@@ -1,7 +1,7 @@
 # My Project
 
 ## 📊 Hosted Reports
-- **📄 HTML Report:** [View Report]((https://github.com/EricZou007/QTM350_homework5/blob/main/assignment_05.html)
+- **📄 HTML Report:** [View Report](https://github.com/EricZou007/QTM350_homework5/blob/main/assignment_05.html)
 - **📊 Presentation:** [View Presentation](https://github.com/EricZou007/QTM350_homework5/blob/main/revealjs.pdf)
 
 ## 📂 Repository Contents
