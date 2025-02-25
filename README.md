@@ -2,7 +2,7 @@
 
 ## 📊 Hosted Reports
 - **📄 HTML Report:** [View Report](https://github.com/EricZou007/QTM350_homework5.git)
-- **📊 Presentation:** [View Presentation]([https://github.com/EricZou007/QTM350_homework5.git](https://github.com/EricZou007/QTM350_homework5/blob/main/revealjs.pdf))
+- **📊 Presentation:** [View Presentation](https://github.com/EricZou007/QTM350_homework5/blob/main/revealjs.pdf)
 
 ## 📂 Repository Contents
 - `assignment_05.qmd` - Source Quarto report
