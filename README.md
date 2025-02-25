@@ -1,7 +1,8 @@
 # My Project
 
 ## 📊 Hosted Reports
-- **📄 HTML Report:** [View Report](https://github.com/EricZou007/QTM350_homework5/blob/main/assignment_05.html)
+- **📄 HTML Report:** [View Report]([https://github.com/EricZou007/QTM350_homework5/blob/main/assignment_05.html](https://rawcdn.githack.com/EricZou007/QTM350_homework5/08cdfe4e475a419539921ca953a925eb7803c90b/revealjs.html
+)
 - **📊 Presentation:** [View Presentation](https://github.com/EricZou007/QTM350_homework5/blob/main/revealjs.pdf)
 
 ## 📂 Repository Contents
@@ -9,4 +10,3 @@
 - `revealjs.qmd` - Source Quarto presentation
 - `assignment_05.pdf` - PDF version of the report
 
-Published link of the presentation: https://rawcdn.githack.com/EricZou007/QTM350_homework5/08cdfe4e475a419539921ca953a925eb7803c90b/revealjs.html
