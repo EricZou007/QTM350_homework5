@@ -112,7 +112,7 @@ plt.show()
 
 ### Summary Table
 
-Table @table-key-stats provides a statistical summary of the dataset.
+Table provides a statistical summary of the dataset.
 
 ```{python}
 #| label: table-key-stats
